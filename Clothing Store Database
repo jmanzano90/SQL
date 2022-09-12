@@ -1,0 +1,21 @@
+/** clothing store
+jeans 200 10 10 blue fall
+tops 200 5 4 white summer
+shoes 200 15 8 white summer
+shorts 200 8 10 blue summer
+skirts 100 8 10 black fall **/
+
+CREATE TABLE clothing (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, price INTEGER,size INTEGER,color TEXT, season TEXT);
+
+INSERT INTO clothing VALUES (1,"jeans",200,10,10, "blue","fall");
+INSERT INTO clothing VALUES (2,"tops",200,5,4,"white","summer");
+INSERT INTO clothing VALUES (3, "shoes",200,15,8,"white","summer");
+INSERT INTO clothing VALUES (4, "shorts", 200,8,10,"blue","summer");
+INSERT INTO clothing VALUES (5,"skirts",100,8,10,"black","fall");
+SELECT * FROM clothing;
+
+----Select the orderered items by price----
+SELECT *FROM clothing ORDER BY price;
+
+----What is the MAX quantity ordered?----
+SELECT MAX(quantity) FROM clothing; 
