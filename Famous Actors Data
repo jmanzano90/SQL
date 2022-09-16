@@ -1,0 +1,44 @@
+CREATE TABLE Actors (id INTEGER PRIMARY KEY AUTOINCREMENT, fullname TEXT, age INTEGER);
+
+INSERT INTO actors VALUES (1,"Emma Stone", 33);
+INSERT INTO actors VALUES (2,"Blake Lively", 35);
+INSERT INTO actors VALUES (3,"Ryan Reynolds", 45);
+INSERT INTO actors VALUES (4,"Emily Blunt", 39);
+INSERT INTO actors VALUES (5,"John Krasinski",42);
+INSERT INTO actors VALUES (6,"Jennifer Lawrence",32);
+
+CREATE TABLE Movies  
+(id integer primary key autoincrement, movie TEXT, genre TEXT, actor_id INTEGER);
+INSERT INTO movies(movie, genre, actor_id) VALUES ("Cruella", "Comedy,Crime",1);
+INSERT INTO movies(movie, genre, actor_id) VALUES ("The Help", "Historical Drama",1);
+INSERT INTO movies(movie, genre, actor_id) VALUES ("Sisterhood of the Traveling Pants", "Romance,Comedy,Drama",2);
+INSERT INTO movies(movie, genre, actor_id) VALUES ("Sisterhood of the Traveling Pants II", "Romance,Comedy,Drama",2);
+INSERT INTO movies(movie, genre, actor_id) VALUES ("The Proposal", "Romantic Comedy",3);
+INSERT INTO movies(movie, genre, actor_id) VALUES ("A Quiet Place", "Thriller",4);
+INSERT INTO movies(movie, genre, actor_id) VALUES ("A Quiet Place II", "Thriller",4);
+INSERT INTO movies(movie, genre, actor_id) VALUES ("13 Hours", "Action",5);
+INSERT INTO movies(movie, genre, actor_id) VALUES ("Joy", "Drama",6);
+
+CREATE Table Couples
+(id integer primary key autoincrement, actor1_id INTEGER, actor2_id INTEGER);
+INSERT INTO couples(actor1_id,actor2_id)VALUES(2,3);
+INSERT INTO couples(actor1_id,actor2_id)VALUES(4,5);
+
+*** Created three tables listing famous actors, movies they've starred in and their famous actor couple ***
+
+----Listed famous actors with the movie they've starred in to include the genre by utilizing Join----
+SELECT actors.fullname, movies.movie, movies.genre
+FROM actors
+LEFT OUTER JOIN movies
+ON actors.id = movies.actor_id;
+
+----Listed the actors who are a couple by combining multiple Joins----
+SELECT a.fullname, b.fullname FROM couples
+JOIN actors a
+ON actor1_id = a.id
+JOIN actors b
+ON actor2_id = b.id;
+
+
+
+
