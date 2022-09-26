@@ -43,3 +43,10 @@ FROM FebSales
 JOIN Customers
 ON FebSales.OrderID = Customers.Order_ID
 WHERE FebSales.Quantity >2;
+
+----8. List all the products sold in Los Angeles in February, and include how many of each were sold.----
+
+SELECT product, SUM(quantity) 
+FROM FebSales
+WHERE location like '%Los Angeles%'
+GROUP BY product;
