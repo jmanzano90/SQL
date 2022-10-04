@@ -1,0 +1,66 @@
+*** For this project, I downloaded the Spotify data from Kaggle and created a table to insert the data into. 
+Listed below are SQL queries utilizing the Spotify data from Kaggle.
+
+---- Creating the table ----
+
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL 
+)
+
+-- Next, I inserted the Spotify Data .csv into the table to begin exploring the data using SQL --
+
+
+---- 1. What are the top 5 popular artist and songs? ----
+
+ELECT MAX(popularity), Artist_name, track_name
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+Order by MAX(popularity) DESC
+LIMIT 5;
+
+---- 2. What artist released the longest song and how long was it? ----
+
+SELECT MAX(duration_ms), artist_name
+FROM BIT_DB.spotifydata;
+
+---- 3. How many songs does Ariana Grande have featured? ----
+
+SELECT COUNT(artist_name)
+FROM spotifydata
+WHERE artist_name = 'Ariana Grande';
+
+---- 4. How many songs does each artist have featured listed in descending order? ----
+
+SELECT COUNT(id), artist_name
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+ORDER BY COUNT(id)DESC;
+
+---- 5. What songs have a popularity rating of 90 or higher? ----
+
+SELECT track_name, popularity
+FROM BIT_DB.Spotifydata
+GROUP BY track_name
+HAVING popularity >89;
+
+---- 6. What song has the max danceability rating? ----
+
+SELECT MAX(danceability), track_name
+FROM BIT_DB.spotifydata;
