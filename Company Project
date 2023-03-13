@@ -74,3 +74,25 @@ JOIN artists a
 ON a.artistid = al.ArtistId
 
 ---- 12. Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
+
+SELECT t.name as TrackName, al.title as AlbumName, mt.name as MediaType, g.name as Genre
+FROM albums al
+JOIN tracks t
+ON t.albumid = al.AlbumId
+JOIN media_types mt
+ON mt.mediatypeid = t.mediatypeid
+JOIN genres g
+ON g.genreid = t.genreid
+
+---- 13. Show the total sales made by each sales agent.
+
+SELECT DISTINCT e.firstname as employeefirstname, e.lastname as employeelastname, COUNT(ii.quantity)*ii.unitprice as totalsales
+from customers c
+JOIN employees e
+ON c.supportrepid = e.employeeid
+JOIN invoices i
+ON i.customerid = c.customerid
+JOIN invoice_items ii
+ON ii.invoiceid = i.invoiceid
+Group by e.employeeid
+
