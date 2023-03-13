@@ -1,0 +1,15 @@
+--- In this SQL project, I downloaded a dataset from Kaggle. ---
+
+
+--- 1. Select all information from the Police Department where the employeeName begins with Chris.
+
+SELECT * from salaries 
+WHERE jobtitle like '%Police Department%' and EmployeeName like 'Chris%'
+
+--- 2. Select job titles where the base pay is greater than $150,000 but less than $270,000 and did not accumulate overtime pay. ---
+
+SELECT jobtitle, basepay, overtimepay from salaries
+where basepay > 150000 and basepay < 270000 and overtimepay = '0'
+group by jobtitle
+
+--- 3. 
